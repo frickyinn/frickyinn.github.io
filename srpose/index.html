@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SRPose: Two-view Relative Pose Estimation With Sparse Keypoints">
+  <meta name="keywords" content="SRPose, Camera Pose Estimation, Pose Estimation, ECCV 2024">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SRPose: Two-view Relative Pose Estimation With Sparse Keypoints</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://frickyinn.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SRPose: Two-view Relative Pose Estimation With Sparse Keypoints</h1>
+          <h2 class="title is-5 publication-title"><b>ECCV 2024</b></h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://frickyinn.github.io/">Rui Yin</a><sup>1</sup></span>,
+            </span>
+            <span class="author-block">
+              <a href="https://yulunzhang.com/">Yulun Zhang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://dyingbrain.github.io/">Zherong Pan</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              JianJun Zhu<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Cheng Wang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=ex_xMRMAAAAJ">Biao Jia</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup><a href="https://www.hanglok-tech.cn/">Hanglok-Tech</a>,</span>
+            <span class="author-block"><sup>2</sup>Shanghai Jiao Tong University</span>
+            <span class="author-block"><sup>3</sup>Tencent America</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link (Original) -->
+              <!-- <span class="link-block">
+                <a href="./data/paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2407.08199"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. 
+              <span class="link-block">
+                <a href="https://youtu.be/fjRnFL91EZc"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/frickyinn/SRPose"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="./data/teaser.png" alt="SRPose Teaser">
+        <h2 class="subtitle has-text-justified">
+          <b>Fig. 1: Relative pose estimation by SRPose.</b>
+          Dots drawn in the figures visualize the cross-attention scores of sparse keypoints across the two images, with brighter dots representing higher attention.
+          <b>Camera-to-world</b>: (a), (b), (c) visualize the epipolar lines, representing the connections between the nine corresponding points across two views. 
+          Higher attention is shown to the overlap of the scenes. 
+          <b>Object-to-Camera</b>: (d), (e), (f) show the relative 6D pose estimation in the query image with only one accessible object prompt in the reference image. 
+          Higher attention is shown to the target object.
+          <b>SRPose establishes implicit correspondences.</b>
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Two-view pose estimation is essential for map-free visual relocalization and object pose tracking tasks. However, traditional matching methods suffer from time-consuming robust estimators, while deep learning-based pose regressors only cater to camera-to-world pose estimation, lacking generalizability to different image sizes and camera intrinsics. In this paper, we propose SRPose, a sparse keypoint-based framework for two-view relative pose estimation in camera-to-world and object-to-camera scenarios.  SRPose consists of a sparse keypoint detector, an intrinsic-calibration position encoder, and promptable prior knowledge-guided attention layers. Given two RGB images of a fixed scene or a moving object, SRPose estimates the relative camera or 6D object pose transformation. Extensive experiments demonstrate that SRPose achieves competitive or superior performance compared to state-of-the-art methods in terms of accuracy and speed, showing generalizability to both scenarios. It is robust to different image sizes and camera intrinsics, and can be deployed with low computing resources.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Approach</h2>
+        <img src="./data/overview.png" alt="SRPose Overview">
+        <h2 class="subtitle has-text-justified">
+          <b>Fig. 3: Overview.</b> 
+          SRPose comprises four main components: 
+          <b>1)</b> The sparse keypoint detector detects keypoints associated with descriptors separately sfrom the two images; 
+          <b>2)</b> The intrinsic-calibration (IC) position encoder modulates the keypoints' coordinates with camera intrinsics, and encodes their position information; 
+          <b>3)</b> Guided by the prior knowledge of keypoint similarities, along with the object prompt, the attention layers establish implicit cross-view correspondences; 
+          <b>4)</b> The regressor estimates relative pose <b>R, t</b> under the constraints of implicit correspondences.
+        </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{yin2024srpose,
+    title={SRPose: Two-view Relative Pose Estimation with Sparse Keypoints},
+    author={Yin, Rui and Zhang, Yulun and Pan, Zherong and Zhu, Jianjun and Wang, Cheng and Jia, Biao},
+    booktitle={ECCV},
+    year={2024}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- <a class="icon-link"
+         href="./data/paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a> -->
+      <a class="icon-link" href="https://github.com/crockwell/far" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            <a href="https://github.com/nerfies/nerfies.github.io">Webpage Template</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
